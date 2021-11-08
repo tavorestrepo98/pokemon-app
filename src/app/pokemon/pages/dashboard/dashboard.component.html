@@ -1,0 +1,75 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Pokemones</h1>
+
+  <h2 class="mat-h2" *ngIf="pokemonesSeleccionados.length !== 0">Pokemones seleccionados</h2>
+
+  <div class="container" *ngIf="pokemonesSeleccionados.length !== 0">
+    <div class="row">
+      <mat-card *ngFor="let pokemon of pokemonesSeleccionados; index as i" class="col-lg-3 col-5 col-sm example-card" style="margin: 20px;">
+        <mat-card-header>
+          <mat-card-title>{{ pokemon.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="pokemon.img" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warn" (click)="quitarPokemon(i)">Quitar pokemon</button>
+          <!-- <button mat-button>SHARE</button> -->
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <button
+      mat-button
+      color="primary"
+      [disabled]="pokemonesSeleccionados.length !== 2"
+      (click)="iraPelear()"
+    >Batallar</button>
+  </div>
+
+  <!-- <mat-grid-list cols="2" rowHeight="350px">
+
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+        </mat-card-content>
+      </mat-card>
+
+
+    </mat-grid-tile>
+
+  </mat-grid-list> -->
+
+  <h1 class="mat-h2">Lista de pokemon</h1>
+  <div class="container">
+    <div class="row">
+      <mat-card *ngFor="let pokemon of pokemones; index as i" class="col-lg-3 col-5 col-sm example-card" style="margin: 20px;">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ pokemon.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="pokemon.img" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="agregarPokemon(pokemon)" >Agregar Pokemon</button>
+          <!-- <button mat-button>SHARE</button> -->
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

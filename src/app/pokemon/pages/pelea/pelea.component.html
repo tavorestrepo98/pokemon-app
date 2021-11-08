@@ -1,0 +1,33 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Batalla</h1>
+
+  <h2 class="mat-h2" *ngIf="pokemonesSeleccionados.length !== 0">Pokemones seleccionados</h2>
+
+  <div class="container" *ngIf="pokemonesSeleccionados.length !== 0">
+    <div class="row">
+      <mat-card *ngFor="let pokemon of pokemonesSeleccionados; index as i" class="col-lg-3 col-5 col-sm example-card" style="margin: 20px;">
+        <mat-card-header class="d-flex flex-column">
+          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+          <mat-card-title>{{ pokemon.name }}</mat-card-title>
+          <div *ngIf="(flag) && (indiceGanador === i)" class="p-3 mb-2 bg-success text-white rounded-sm">Ganador {{this.puntos[i]}}</div>
+          <div *ngIf="(flag) && (indicePerdedor === i)" class="p-3 mb-2 bg-danger text-white rounded-sm">Perdedor {{this.puntos[i]}}</div>
+          <div *ngIf="flag && empate" class="p-3 mb-2 bg-warning text-white rounded-sm">Empate {{this.puntos[i]}}</div>
+        </mat-card-header>
+        <img mat-card-image [src]="pokemon.img" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+          <button mat-raised-button color="warn" (click)="quitarPokemon(i)">Quitar pokemon</button>
+        </mat-card-actions> -->
+
+      </mat-card>
+    </div>
+  </div>
+
+  <button
+    mat-raised-button
+    color="warn"
+    (click)="poneraPelear()"
+  >Pelear</button>
+
+</div>
